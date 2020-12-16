@@ -8,7 +8,7 @@ Our codes in this package are tested with
   1. Python 3.7
   2. Tensorflow 1.13.1
   3. gensim 3.8.0
-  4. [OWL2Vec\*]{https://github.com/KRR-Oxford/OWL2Vec-Star}
+  4. [OWL2Vec\*](https://github.com/KRR-Oxford/OWL2Vec-Star)
 
 
 ### Startup
@@ -17,7 +17,7 @@ Our codes in this package are tested with
 Run e.g., LogMap, get its output mappings, overlapping mappings and anchor mappings.
 
 ##### Pre-process #1: Ontology Embedding
-You can either use some word2vec embedding by gensim ([download]{https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing}), or the pre-trained OWL2Vec\* embedding. 
+You can either use some word2vec embedding by gensim ([download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), or the pre-trained OWL2Vec\* embedding. 
 Note the to-be-aligned ontologies can be set with their own embeddings or be set with one embedding. 
 OWL2Vec\* is able embed multiple ontologies into one language model.
 
