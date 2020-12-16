@@ -15,9 +15,9 @@ parser.add_argument('--class_word_size', type=int, default=14,
                     help='max. tokens in a class: 14 for HeLis/FoodOn, 6 for Conference; '
                          'it has no impact currently as word vector averaging is adopted.')
 parser.add_argument('--left_path_size', type=int, default=7,
-                    help='max. path length: 7 for HeLis, 7 for Conference, 1 for class label')
+                    help='path as input: 7 for HeLis, 7 for Conference; class as input: 1')
 parser.add_argument('--right_path_size', type=int, default=31,
-                    help='max. path length: 31 for FoodOn, 7 for Conference, 1 for class label')
+                    help='path as input: 31 for FoodOn, 7 for Conference; class as input: 1')
 
 parser.add_argument('--left_w2v_dir', type=str, default='word2vec_gensim',
                     help='OWL2Vec or Word2Vec of the left ontology')
