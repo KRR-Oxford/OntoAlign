@@ -3,6 +3,8 @@
 This folder includes the implementation of LogMap-ML introduced in the paper ****Augmenting Ontology Alignment by Semantic Embedding and Distant Supervision****.
 The HeLis and FoodOn ontologies, and their partial GS is in helis_foodon.tar.gz.
 
+> Note: this is a preliminary implementation. We are making it more "end-to-end".
+
 ### Dependence 
 Our codes in this package are tested with
   1. Python 3.7
@@ -51,4 +53,3 @@ Note it is suggested to annotate and use the mappings of at least three systems 
 Thus run, sample and annotate for LogMap and [AML](https://github.com/AgreementMakerLight/AML-Project) as well.
 
 
-*Note: this is a preliminary implementation. We are making it more "end-to-end". *
