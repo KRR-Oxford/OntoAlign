@@ -7,7 +7,7 @@ from lib.Label import uri_prefix
 Evaluation for HeLis and FoodOn
 Recall: calculate the recall w.r.t. the GS mappings
 
-For Precision, sample and save a number of random predicted class mappings for manual annotation.
+For Precision, sample and save a number of random predicted class mappings for manual annotation (add 'true' or 'false' in the end).
 An example of the annotated mapping:
 
 vc:Tryptophan|obo:CHEBI_27897|0.892|true
@@ -23,8 +23,8 @@ parser.add_argument('--prediction_out_file', type=str, default='prediction_score
 parser.add_argument('--GS_file', type=str, default='data/GS_mappings_path_checked.txt')
 parser.add_argument('--threshold', type=float, default=0.44)
 parser.add_argument('--prediction_sample_num', type=int, default=50)
-parser.add_argument('--sample_to_annotate_file', type=str, default='prediction_scores_.txt')
-parser.add_argument('--output_mapping_file', type=str, default='prediction_output_mappings.txt')
+parser.add_argument('--sample_to_annotate_file', type=str, default='LogMap-ML_samples_a.txt')
+parser.add_argument('--output_mapping_file', type=str, default='LogMap-ML_output_mappings.txt')
 FLAGS, unparsed = parser.parse_known_args()
 
 GS = set([line.strip() for line in open(FLAGS.GS_file).readlines()])
