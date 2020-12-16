@@ -17,12 +17,11 @@ Our codes in this package are tested with
 Run e.g., LogMap, get its output mappings, overlapping mappings and anchor mappings.
 
 ##### Pre-process #1: Ontology Embedding
-You can either use some word2vec embedding by gensim ([download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), or the pre-trained OWL2Vec\* embedding. 
-Note the to-be-aligned ontologies can be set with their own embeddings or be set with one embedding. 
-OWL2Vec\* is able embed multiple ontologies into one language model.
+You can either use some word2vec embedding by gensim ([download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), or the ontology tailored [OWL2Vec\* embedding](https://github.com/KRR-Oxford/OWL2Vec-Star). 
+Note the to-be-aligned ontologies can be set with their own embeddings or be set with one embedding. OWL2Vec\* is able embed multiple ontologies into one language model.
 
 ##### Pre-process #2: Path and Class Name Extraction
-We use Java OWL API to pre-extract all the paths and names of the to-be-aligned ontologies. See java_preprocess/.
+We use Java OWL API to pre-extract all the paths and class names of the to-be-aligned ontologies. They are saved as intermediate files. See java_preprocess/.
 
 ##### Step #1: Sample
 ```python sample.py```
@@ -41,7 +40,7 @@ Calculate the recall w.r.t. the GS, and sample a number of mappings for annotati
 
 ```python evaluate.py```
 
-Annotate the sampled mapping by appending "true" or "false", and then approximate the precision and recall by:
+Annotate the sampled mappings by appending "true" or "false", and then approximate the precision and recall by:
 
 ```python approximate_precision_recall.py```
 
