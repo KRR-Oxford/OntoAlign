@@ -13,14 +13,14 @@ Our codes in this package are tested with
 
 ### Startup
 
-##### Pre-process #0: Running the original system
+##### Pre-process #1: Running the original system
 Run e.g., LogMap, get its output mappings, overlapping mappings and anchor mappings.
 
-##### Pre-process #1: Ontology Embedding
+##### Pre-process #2: Ontology Embedding
 You can either use some word2vec embedding by gensim ([download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), or the ontology tailored [OWL2Vec\* embedding](https://github.com/KRR-Oxford/OWL2Vec-Star). 
 Note the to-be-aligned ontologies can be set with their own embeddings or be set with one embedding. OWL2Vec\* is able embed multiple ontologies into one language model.
 
-##### Pre-process #2: Path and Class Name Extraction
+##### Pre-process #3: Path and Class Name Extraction
 We use Java OWL API to pre-extract all the paths and class names of the to-be-aligned ontologies. They are saved as intermediate files. See java_preprocess/.
 
 ##### Step #1: Sample
