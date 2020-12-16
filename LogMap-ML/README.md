@@ -16,6 +16,7 @@ Our codes in this package are tested with
 
 ##### Pre-process #1: Running the original system
 Run e.g., [LogMap](https://github.com/ernestojimenezruiz/logmap-matcher), get its output mappings, overlapping mappings and anchor mappings, by
+
 ```java -jar target/logmap-matcher-3.0.jar MATCHER file:/xx/helis_v1.00.owl file:/xx/foodon-merged.owl output/ true```
 
 ##### Pre-process #2: Ontology Embedding
