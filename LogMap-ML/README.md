@@ -49,3 +49,6 @@ Annotate the sampled mappings by appending "true" or "false", and then approxima
 
 Note it is suggested to annotate and use the mappings of at least three systems to approximate the GS. 
 Thus run, sample and annotate for LogMap and [AML](https://github.com/AgreementMakerLight/AML-Project) as well.
+
+
+*Note: this is a preliminary implementation. We are making it more "end-to-end". *
