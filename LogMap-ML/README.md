@@ -10,13 +10,13 @@ Our codes in this package are tested with
   2. Tensorflow 1.13.1
   3. gensim 3.8.0
   4. [OWL2Vec\*](https://github.com/KRR-Oxford/OWL2Vec-Star)
-  5. LogMap v3.0
+  5. [LogMap v3.0](https://github.com/ernestojimenezruiz/logmap-matcher)
 
 
 ### Startup
 
 #### Pre-process #1: Running the original system
-Run e.g., [LogMap](https://github.com/ernestojimenezruiz/logmap-matcher), get its output mappings, overlapping mappings and anchor mappings, by
+Run LogMap, get its output mappings, overlapping mappings and anchor mappings, by
 
 ```java -jar target/logmap-matcher-3.0.jar MATCHER file:/xx/helis_v1.00.owl file:/xx/foodon-merged.owl output/ true```
 
