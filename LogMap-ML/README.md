@@ -9,12 +9,14 @@ Our codes in this package are tested with
   2. Tensorflow 1.13.1
   3. gensim 3.8.0
   4. [OWL2Vec\*](https://github.com/KRR-Oxford/OWL2Vec-Star)
+  5. LogMap v3.0
 
 
 ### Startup
 
 ##### Pre-process #1: Running the original system
-Run e.g., LogMap, get its output mappings, overlapping mappings and anchor mappings.
+Run e.g., [LogMap](https://github.com/ernestojimenezruiz/logmap-matcher), get its output mappings, overlapping mappings and anchor mappings, by
+```java -jar target/logmap-matcher-3.0.jar MATCHER file:/xx/helis_v1.00.owl file:/xx/foodon-merged.owl output/ true```
 
 ##### Pre-process #2: Ontology Embedding
 You can either use some word2vec embedding by gensim ([download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), or the ontology tailored [OWL2Vec\* embedding](https://github.com/KRR-Oxford/OWL2Vec-Star). 
@@ -45,4 +47,4 @@ Annotate the sampled mappings by appending "true" or "false", and then approxima
 ```python approximate_precision_recall.py```
 
 Note it is suggested to annotate and use the mappings of at least three systems to approximate the GS. 
-Thus run, sample and annotate for LogMap and AML as well.
+Thus run, sample and annotate for LogMap and [AML](https://github.com/AgreementMakerLight/AML-Project) as well.
