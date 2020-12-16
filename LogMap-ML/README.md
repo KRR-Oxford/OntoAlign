@@ -1,6 +1,6 @@
 # LogMap-ML
 
-This folder includes the implementation for the paper ****Augmenting Ontology Alignment by Semantic Embedding and Distant Supervision****.
+This folder includes the implementation of LogMap-ML introduced in the paper ****Augmenting Ontology Alignment by Semantic Embedding and Distant Supervision****.
 The HeLis and FoodOn ontologies, and their partial GS is in helis_foodon.tar.gz.
 
 ### Dependence 
