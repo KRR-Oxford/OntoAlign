@@ -24,22 +24,19 @@ OWL2Vec\* is able embed multiple ontologies into one language model.
 ##### Pre-process #2: Path and Class Name Extraction
 We use Java OWL API to pre-extract all the paths and names of the to-be-aligned ontologies. See java_preprocess/.
 
-##### Sample
+##### Step #1: Sample
 ```python sample.py```
 
 See the help for different settings.
 
-##### Train and valid
+##### Step #2: Train, valid and predict
 ```python train_valid.py```
 
-See the help for different settings.
-
-##### Predict 
 ```python predict_candidates.py```
 
 Note the candidate mappings should be pre-extracted, or use the overlapping mappings by LogMap.
 
-##### Evaluate
+##### Step #3: Evaluate
 Calculate the recall w.r.t. the GS, and sample a number of mappings for annotation, by:
 
 ```python evaluate.py```
