@@ -19,26 +19,26 @@ Run e.g., [LogMap](https://github.com/ernestojimenezruiz/logmap-matcher), get it
 
 ```java -jar target/logmap-matcher-3.0.jar MATCHER file:/xx/helis_v1.00.owl file:/xx/foodon-merged.owl output/ true```
 
-##### Pre-process #2: Ontology Embedding
+#### Pre-process #2: Ontology Embedding
 You can either use the word2vec embedding by gensim ([download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), or the ontology tailored [OWL2Vec\* embedding](https://github.com/KRR-Oxford/OWL2Vec-Star). 
 The to-be-aligned ontologies can be set with their own embeddings or be set with one embedding.
 
-##### Pre-process #3: Path and Class Name Extraction
+#### Pre-process #3: Path and Class Name Extraction
 We use Java OWL API to pre-extract all the paths and class names of the to-be-aligned ontologies. They are saved as intermediate files. See java_preprocess/.
 
-##### Step #1: Sample
+#### Step #1: Sample
 ```python sample.py```
 
 See the help for different settings.
 
-##### Step #2: Train, valid and predict
+#### Step #2: Train, valid and predict
 ```python train_valid.py```
 
 ```python predict_candidates.py```
 
 Note the candidate mappings should be pre-extracted, or use the overlapping mappings by LogMap.
 
-##### Step #3: Evaluate
+#### Step #3: Evaluate
 Calculate the recall w.r.t. the GS, and sample a number of mappings for annotation, by:
 
 ```python evaluate.py```
