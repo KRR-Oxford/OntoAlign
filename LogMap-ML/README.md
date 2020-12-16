@@ -20,8 +20,8 @@ Run e.g., [LogMap](https://github.com/ernestojimenezruiz/logmap-matcher), get it
 ```java -jar target/logmap-matcher-3.0.jar MATCHER file:/xx/helis_v1.00.owl file:/xx/foodon-merged.owl output/ true```
 
 ##### Pre-process #2: Ontology Embedding
-You can either use some word2vec embedding by gensim ([download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), or the ontology tailored [OWL2Vec\* embedding](https://github.com/KRR-Oxford/OWL2Vec-Star). 
-Note the to-be-aligned ontologies can be set with their own embeddings or be set with one embedding. OWL2Vec\* is able embed multiple ontologies into one language model.
+You can either use the word2vec embedding by gensim ([download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), or the ontology tailored [OWL2Vec\* embedding](https://github.com/KRR-Oxford/OWL2Vec-Star). 
+The to-be-aligned ontologies can be set with their own embeddings or be set with one embedding.
 
 ##### Pre-process #3: Path and Class Name Extraction
 We use Java OWL API to pre-extract all the paths and class names of the to-be-aligned ontologies. They are saved as intermediate files. See java_preprocess/.
