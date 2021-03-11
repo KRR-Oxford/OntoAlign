@@ -23,6 +23,7 @@ Run LogMap, get its output mappings, overlapping mappings and anchor mappings, b
 
 Note LogMap has been updated to V4.0 which now uses OWL API 4. 
 No functional changes are made from V3.0 to V4.0, and thus the ML extension should still be able to work for LogMap V4.0.
+You can try to use the built logmap-matcher-4.0.jar or download the LogMap codes and build it by yourself with Maven.
  
 #### Pre-process #2: Ontology Embedding
 You can either use the word2vec embedding by gensim ([download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), 
