@@ -18,14 +18,14 @@ parser.add_argument('--train_rate', type=float, default=1.0,
                     help='it can be set to 1.0 to use all the seeds as the training set and 20% of them as the validation set;'
                          'or a float smaller than 1.0, where train_rate of all the samples are used as the training set and the remaining are used as the validation set')
 parser.add_argument('--sample_duplicate', type=int, default=2)
-parser.add_argument('--left_path_file', type=str, default='helis_all_paths.txt',
+parser.add_argument('--left_path_file', type=str, default='helis_foodon/helis_all_paths.txt',
                     help='all the paths that are pre-extracted')
-parser.add_argument('--right_path_file', type=str, default='foodon_all_paths.txt',
+parser.add_argument('--right_path_file', type=str, default='helis_foodon/foodon_all_paths.txt',
                     help='all the paths that are pre-extracted')
-parser.add_argument('--left_class_name_file', type=str, default='helis_class_name.json',
+parser.add_argument('--left_class_name_file', type=str, default='helis_foodon/helis_class_name.json',
                     help='pre-extracted the class names (rdfs:label and URI name) of each class')
-parser.add_argument('--right_class_name_file', type=str,
-                    default='pre-extracted the class names (rdfs:label and URI name) of each class')
+parser.add_argument('--right_class_name_file', type=str, default='helis_foodon/foodon_class_name.json',
+                    help='pre-extracted the class names (rdfs:label and URI name) of each class')
 parser.add_argument('--keep_uri', type=str, default='no',
                     help='keep uri in the sample or use the path labels; '
                          'yes for the OAEI conference track; no for HeLis and FoodOn')
