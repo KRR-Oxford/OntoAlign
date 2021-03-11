@@ -16,7 +16,7 @@ Our codes in this package are tested with
 
 ### Startup
 
-#### Pre-process #1: Running the original system
+### Pre-process #1: Run the original system
 Run LogMap, get its output mappings, overlapping mappings and anchor mappings, by
 
 ```java -jar target/logmap-matcher-3.0.jar MATCHER file:/xx/helis_v1.00.owl file:/xx/foodon-merged.owl output/ true```
@@ -25,24 +25,24 @@ Note LogMap has been updated to V4.0 which now uses OWL API 4.
 No functional changes are made from V3.0 to V4.0, and thus the ML extension should still be able to work for LogMap V4.0.
 You can try to use the built logmap-matcher-4.0.jar or download the LogMap codes and build it by yourself with Maven.
  
-#### Pre-process #2: Ontology Embedding
+### Pre-process #2: Embedding Models
 You can either use the word2vec embedding by gensim (The one trained by English Wikipedia articles in 2018 [download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), 
 or the ontology tailored [OWL2Vec\* embedding](https://github.com/KRR-Oxford/OWL2Vec-Star). 
 The to-be-aligned ontologies can be set with their own embedding models or be set with one common embedding model.
 
-#### Pre-process #3: Path and Class Name Extraction
+### Pre-process #3: Path and Class Name Extraction
 We use Java OWL API to pre-extract all the paths and class names of the to-be-aligned ontologies. 
 They are saved as intermediate files (xx_all_paths.txt and xx_class_name.json) by the two java programs under java_preprocess/.
 The name and path files of HeLis and FoodOn are already in helis_foodon.tar.gz.
 
-#### Step #1: Sample
+### Step #1: Sample
 ```python sample.py```
 
 See the parameter "help" and comment inside the program for different settings. 
 The branch conflicts which are manually set for higher quality seed mappings are set inside the program.
 It will output mappings_train.txt and mappings_valid.txt.
 
-#### Step #2: Train, valid and predict
+### Step #2: Train, Valid and Predict
 ```python train_valid.py```
 
 ```python predict_candidates.py```
@@ -51,7 +51,7 @@ Note the candidate mappings should be pre-extracted by some ontology alignment s
 downloaded from OAEI as we did in the experiment for some settings. 
 One direct candidate source is the overlapping mappings by LogMap.
 
-#### Step #3: Evaluate
+### Step #3: Evaluate
 Calculate the recall w.r.t. the GS, and sample a number of mappings for annotation, by:
 
 ```python evaluate.py```
