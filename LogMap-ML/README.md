@@ -68,4 +68,5 @@ Besides the original LogMap and LogMap-ML, you can also consider [AML](https://g
 
 ========================================
 
-> Note: this is a preliminary implementation. We are making it more "end-to-end".
+> This is still a preliminary implementation. We are making it more "end-to-end". 
+> The current codes use tf.contrib which does not exist in Tensorflow 2.x. 
