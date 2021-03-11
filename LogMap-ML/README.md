@@ -26,7 +26,7 @@ No functional changes are made from V3.0 to V4.0, and thus the ML extension shou
 You can try to use the built logmap-matcher-4.0.jar or download the LogMap codes and build it by yourself with Maven.
  
 #### Pre-process #2: Ontology Embedding
-You can either use the word2vec embedding by gensim ([download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), 
+You can either use the word2vec embedding by gensim (The one trained by English Wikipedia articles in 2018 [download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), 
 or the ontology tailored [OWL2Vec\* embedding](https://github.com/KRR-Oxford/OWL2Vec-Star). 
 The to-be-aligned ontologies can be set with their own embedding models or be set with one common embedding model.
 
@@ -69,4 +69,5 @@ Besides the original LogMap and LogMap-ML, you can also consider [AML](https://g
 ========================================
 
 > This is still a preliminary implementation. We are making it more "end-to-end". 
+>
 > The current codes use tf.contrib which does not exist in Tensorflow 2.x. 
