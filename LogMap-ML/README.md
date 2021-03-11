@@ -1,7 +1,7 @@
 # LogMap-ML
 
 This folder includes the implementation of LogMap-ML introduced in the paper ****Augmenting Ontology Alignment by Semantic Embedding and Distant Supervision**** which has been accepted by ESWC 2021.
-The HeLis and FoodOn ontologies, and their partial GS is in helis_foodon.tar.gz.
+The HeLis and FoodOn ontologies, their partial GS, their name and path files are in helis_foodon.tar.gz.
 
 
 ### Dependence 
