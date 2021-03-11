@@ -7,12 +7,15 @@ from lib.Label import uri_prefix
 Evaluation for HeLis and FoodOn
 Recall: calculate the recall w.r.t. the GS mappings
 
-For Precision, sample and save a number of random predicted class mappings for manual annotation (add 'true' or 'false' in the end).
+For Precision, this program will sample and save a number of random predicted class mappings for manual annotation in --sample_to_annotate_file
+In manual annotation, just add 'true' or 'false' in the end of each mapping.
 An example of the annotated mapping:
 
 vc:Tryptophan|obo:CHEBI_27897|0.892|true
 "tryptophan","polar aminoacid","aminoacid","nutrient"|"tryptophan","aminoalkylindole","indoles","benzopyrrole","organonitrogen heterocyclic compound","organonitrogen compound","heteroorganic entity","organic molecular entity","carbon group molecular entity","p-block molecular entity","main group molecular entity","molecular entity","chemical entity","material entity","independent continuant","continuant","entity"
 
+The first line is the mappings with the predicted score, where "true" is the annotation; 
+the second line is the paths of the two to-be-aligned classes (the names are shown for easy human annotation).
 '''
 
 parser = argparse.ArgumentParser()
@@ -20,7 +23,7 @@ parser.add_argument('--left_path_file', type=str, default='helis_all_paths.txt')
 parser.add_argument('--right_path_file', type=str, default='foodon_all_paths.txt')
 parser.add_argument('--anchor_file', type=str, default='logmap_anchors.txt')
 parser.add_argument('--prediction_out_file', type=str, default='prediction_scores.txt')
-parser.add_argument('--GS_file', type=str, default='data/GS_mappings_path_checked.txt')
+parser.add_argument('--GS_file', type=str, default='GS_mappings_path_checked.txt')
 parser.add_argument('--threshold', type=float, default=0.44)
 parser.add_argument('--prediction_sample_num', type=int, default=50)
 parser.add_argument('--sample_to_annotate_file', type=str, default='LogMap-ML_samples_a.txt')
