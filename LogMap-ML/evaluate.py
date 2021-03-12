@@ -24,7 +24,8 @@ parser.add_argument('--right_path_file', type=str, default='helis_foodon/foodon_
 parser.add_argument('--anchor_file', type=str, default='logmap_anchors.txt')
 parser.add_argument('--prediction_out_file', type=str, default='predict_score.txt')
 parser.add_argument('--GS_file', type=str, default='helis_foodon/GS_mappings_path_checked.txt')
-parser.add_argument('--threshold', type=float, default=0.65)
+parser.add_argument('--threshold', type=float, default=0.65, help='this threshold often needs to be fine-tuned '
+                                                                  'to get the best F1 score')
 parser.add_argument('--prediction_sample_num', type=int, default=50, help='how many mappings to sample for human annotation '
                                                                           'for precision approximation')
 parser.add_argument('--sample_to_annotate_file', type=str, default='LogMap-ML_samples_a.txt')
