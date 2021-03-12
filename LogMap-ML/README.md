@@ -36,25 +36,25 @@ They are saved as intermediate files (xx_all_paths.txt and xx_class_name.json) b
 The name and path files of HeLis and FoodOn are already in helis_foodon.tar.gz.
 
 ### Step #1: Sample
-```python sample.py```
+```python sample.py --anchor_mapping_file logmap_output/logmap_anchors.txt```
 
-See the parameter "help" and comment inside the program for different settings. 
+See the parameter "help" and comment inside the program for more setting settings. 
 The branch conflicts which are manually set for higher quality seed mappings are set inside the program.
 It will output mappings_train.txt and mappings_valid.txt.
 
 ### Step #2: Train, Valid and Predict
-```python train_valid.py```
+```python train_valid.py --left_w2v_dir dir/word2vec_gensim --right_w2v_dir dir/word2vec_gensim```
 
-```python predict_candidates.py```
+```python predict_candidates.py --candidate_file logmap_output/logmap_overestimation.txt --left_w2v_dir dir/word2vec_gensim --right_w2v_dir dir/word2vec_gensim```
 
-Note the candidate mappings should be pre-extracted by some ontology alignment systems or 
-downloaded from OAEI as we did in the experiment for some settings. 
+Note the candidate mappings should be pre-extracted by some ontology alignment systems or from some resources (e.g., OAEI). 
 One direct candidate source is the overlapping mappings by LogMap.
+predict_candidates.py by default outputs mapping scores in predict_score.txt.
 
 ### Step #3: Evaluate
 Calculate the recall w.r.t. the GS, and sample a number of mappings for annotation, by:
 
-```python evaluate.py```
+```python evaluate.py --threshold 0.5 --anchor_file logmap_output/logmap_anchors.txt```
 
 It will output a file with a part of the mappings for human annotation. 
 The annotation is done by appending "true" or "false" to each mapping (see annotation example in evaluate.py).
