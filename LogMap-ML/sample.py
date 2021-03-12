@@ -28,14 +28,12 @@ parser.add_argument('--right_class_name_file', type=str, default='helis_foodon/f
                     help='pre-extracted the class names (rdfs:label and URI name) of each class')
 parser.add_argument('--keep_uri', type=str, default='no',
                     help='keep uri in the sample or use the path labels; '
-                         'yes for the OAEI conference track; no for HeLis and FoodOn')
+                         'set it to yes for the OAEI conference track; set it to no for HeLis and FoodOn')
 parser.add_argument('--anchor_branch_conflict', type=str, default='yes')
 parser.add_argument('--generate_negative_sample', type=str, default='yes')
 
-parser.add_argument('--anchor_GS', type=str, default='no', help='set it to no by default; '
-                                                                'or "ideal" heuristic rules based on the GS (set by --GS_file)'
-                                                                'will be adopted to filter out wrong anchor mappings')
-parser.add_argument('--GS_file', type=str, default='')
+parser.add_argument('--anchor_GS', type=str, default='no', help='used for debug; set it to no by default')
+parser.add_argument('--GS_file', type=str, default='', help='used for debug; set it to empty by default')
 FLAGS, unparsed = parser.parse_known_args()
 
 # class disjointness constraints for HeLis and FoodOn

@@ -9,10 +9,10 @@ from lib.Network import nn_predict
 from lib.SiameseNetwork import siamese_nn_predict
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--left_path_file', type=str, default='helis_all_paths.txt')
-parser.add_argument('--right_path_file', type=str, default='foodon_all_paths.txt')
-parser.add_argument('--left_class_name_file', type=str, default='helis_class_name.json')
-parser.add_argument('--right_class_name_file', type=str, default='foodon_class_name.json')
+parser.add_argument('--left_path_file', type=str, default='helis_foodon/helis_all_paths.txt')
+parser.add_argument('--right_path_file', type=str, default='helis_foodon/foodon_all_paths.txt')
+parser.add_argument('--left_class_name_file', type=str, default='helis_foodon/helis_class_name.json')
+parser.add_argument('--right_class_name_file', type=str, default='helis_foodon/foodon_class_name.json')
 parser.add_argument('--closest_anns_file', type=str, default='')
 parser.add_argument('--candidate_file', type=str, default='logmap_overestimation.txt',
                     help='candidate mappings e.g., logmap overlapping mappings')
@@ -29,7 +29,8 @@ parser.add_argument('--left_w2v_dir', type=str, default='word2vec_gensim',
 parser.add_argument('--right_w2v_dir', type=str, default='word2vec_gensim',
                     help='OWL2Vec or Word2Vec of the left ontology')
 
-parser.add_argument('--path_type', type=str, default='label', help='label, path, uri+label')
+parser.add_argument('--path_type', type=str, default='label', help='label, path, uri+label; '
+                                                                   'set it to be consistent with train_valid.py')
 parser.add_argument('--vec_type', type=str, default='word',
                     help='word, uri, word-uri; please set it to word by default;')
 parser.add_argument('--keep_uri', type=str, default='no',
@@ -37,7 +38,8 @@ parser.add_argument('--keep_uri', type=str, default='no',
                          'set it to yes for HeLis and FoodOn; set it to no for the OAEI conference track')
 
 parser.add_argument('--encoder_type', type=str, default='class-con',
-                    help='concatenate the vectors of the classes of a path if path is used as the input')
+                    help='concatenate the vectors of the classes of a path if path is used as the input;'
+                         'set it to be consistent with train_valid.py')
 parser.add_argument('--nn_dir', type=str, default='model_label', help='the folder of models that are trained')
 parser.add_argument('--nn_type', type=str, default='SiameseMLP',
                     help='MLP, BiRNN, AttBiRNN, SiameseMLP, SiameseBiRNN, SiameseAttBiRNN')

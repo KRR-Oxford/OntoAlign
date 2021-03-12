@@ -25,7 +25,7 @@ parser.add_argument('--right_w2v_dir', type=str, default='word2vec_gensim',
                     help='OWL2Vec or Word2Vec of the right ontology')
 
 parser.add_argument('--vec_type', type=str, default='word',
-                    help='word, uri, word-uri; please set it to word by default;')
+                    help='word, uri, word-uri; please set it to word by default')
 
 parser.add_argument('--path_type', type=str, default='label',
                     help='label: the class embedding as input; path: the path embedding as input')
@@ -39,11 +39,14 @@ parser.add_argument('--batch_size', type=int, default=8)
 parser.add_argument('--evaluate_every', type=int, default=100, help='Evaluate model after this many steps')
 FLAGS, unparsed = parser.parse_known_args()
 
-# candidate setting: concatenate the vectors of the classes of a path
+# candidate setting: class-con -- concatenate the vectors of the classes of a path
+#                    avg -- average the vectors of the classes of a path
+# encoder_types = ['avg', 'class-con', 'word-con']
 encoder_types = ['class-con']
 
 # candidate models that have been implemented
-nn_types = ['MLP', 'BiRNN', 'AttBiRNN', 'SiameseMLP', 'SiameseBiRNN', 'SiameseAttBiRNN']
+# SiameseBiRNNN has an on and off bug nan loss issue not addressed
+nn_types = ['MLP', 'BiRNN', 'AttBiRNN', 'SiameseMLP', 'SiameseAttBiRNN']
 
 start = datetime.now()
 
