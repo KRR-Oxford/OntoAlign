@@ -54,7 +54,7 @@ predict_candidates.py by default outputs mapping scores in predict_score.txt.
 ### Step #3: Evaluate
 Calculate the recall w.r.t. the GS, and sample a number of mappings for annotation, by:
 
-```python evaluate.py --threshold 0.5 --anchor_file logmap_output/logmap_anchors.txt```
+```python evaluate.py --threshold 0.65 --anchor_file logmap_output/logmap_anchors.txt```
 
 It will output a file with a part of the mappings for human annotation. 
 The annotation is done by appending "true" or "false" to each mapping (see annotation example in evaluate.py).
