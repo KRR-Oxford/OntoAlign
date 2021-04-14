@@ -3,10 +3,9 @@ import json
 from owlready2 import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--onto_file', type=str,
-                    default='helis_foodon/foodon-merged.owl')
-parser.add_argument('--name_file', type=str, default='./helis_foodon/foodon_class_name2.json')
-parser.add_argument('--path_file', type=str, default='./helis_foodon/foodon_all_paths2.txt')
+parser.add_argument('--onto_file', type=str, default='data/foodon-merged.owl', help='data/helis_v1.00.owl')
+parser.add_argument('--name_file', type=str, default='data/foodon_class_name.json', help='data/helis_class_name.json')
+parser.add_argument('--path_file', type=str, default='data/foodon_all_paths.txt', help='data/helis_all_paths.txt')
 FLAGS, unparsed = parser.parse_known_args()
 
 '''
@@ -59,6 +58,7 @@ def get_class_path(o):
     return ps
 
 
+# Get te maximum depth of a class to the root
 def depth_max(c):
     if len(c.is_a) == 0:
         return 0
