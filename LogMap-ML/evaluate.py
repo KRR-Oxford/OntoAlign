@@ -19,11 +19,11 @@ the second line is the paths of the two to-be-aligned classes (the names are sho
 '''
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--left_path_file', type=str, default='helis_foodon/helis_all_paths.txt')
-parser.add_argument('--right_path_file', type=str, default='helis_foodon/foodon_all_paths.txt')
+parser.add_argument('--left_path_file', type=str, default='data/helis_all_paths.txt')
+parser.add_argument('--right_path_file', type=str, default='data/foodon_all_paths.txt')
 parser.add_argument('--anchor_file', type=str, default='logmap_anchors.txt')
 parser.add_argument('--prediction_out_file', type=str, default='predict_score.txt')
-parser.add_argument('--GS_file', type=str, default='helis_foodon/GS_mappings_path_checked.txt')
+parser.add_argument('--GS_file', type=str, default='data/GS_mappings_path_checked.txt')
 parser.add_argument('--threshold', type=float, default=0.65, help='this threshold often needs to be fine-tuned '
                                                                   'to get the best F1 score')
 parser.add_argument('--prediction_sample_num', type=int, default=50, help='how many mappings to sample for human annotation '

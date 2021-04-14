@@ -9,10 +9,10 @@ from lib.Network import nn_predict
 from lib.SiameseNetwork import siamese_nn_predict
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--left_path_file', type=str, default='helis_foodon/helis_all_paths.txt')
-parser.add_argument('--right_path_file', type=str, default='helis_foodon/foodon_all_paths.txt')
-parser.add_argument('--left_class_name_file', type=str, default='helis_foodon/helis_class_name.json')
-parser.add_argument('--right_class_name_file', type=str, default='helis_foodon/foodon_class_name.json')
+parser.add_argument('--left_path_file', type=str, default='data/helis_all_paths.txt')
+parser.add_argument('--right_path_file', type=str, default='data/foodon_all_paths.txt')
+parser.add_argument('--left_class_name_file', type=str, default='data/helis_class_name.json')
+parser.add_argument('--right_class_name_file', type=str, default='data/foodon_class_name.json')
 parser.add_argument('--closest_anns_file', type=str, default='')
 parser.add_argument('--candidate_file', type=str, default='logmap_overestimation.txt',
                     help='candidate mappings e.g., logmap overlapping mappings')

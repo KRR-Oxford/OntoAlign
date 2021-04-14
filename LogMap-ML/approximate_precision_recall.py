@@ -1,4 +1,4 @@
-GS_file = 'helis_foodon/GS_mappings_path_checked.txt'
+GS_file = 'data/GS_mappings_path_checked.txt'
 
 LogMap_ML_annotated_sample_file = 'LogMap-ML_samples_a.txt'
 LogMap_annotated_sample_file = 'LogMap_samples_a.txt'
