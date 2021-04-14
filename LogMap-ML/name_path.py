@@ -84,7 +84,7 @@ def depth_min(c):
         return 0
     d_min = math.inf
     for super_c in supclasses:
-        super_d = depth_max(c=super_c)
+        super_d = depth_min(c=super_c)
         if super_d < d_min:
             d_min = super_d
     return d_min + 1
