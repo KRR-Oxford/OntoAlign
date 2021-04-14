@@ -1,5 +1,6 @@
 import argparse
 import json
+import math
 from owlready2 import *
 
 parser = argparse.ArgumentParser()
@@ -26,6 +27,14 @@ def shorten_iri(iri):
     return iri
 
 
+def super_classes(c):
+    supclasses = list()
+    for supclass in c.is_a:
+        if type(supclass) == entity.ThingClass:
+            supclasses.append(supclass)
+    return supclasses
+
+
 # Get the class names (IRI name, and english label) for each class.
 def get_class_name(o):
     c_name = dict()
@@ -39,10 +48,7 @@ def get_class_name(o):
 
 def append_super_class(c, p):
     p.append(shorten_iri(iri=c.iri))
-    supclasses = list()
-    for supclass in c.is_a:
-        if type(supclass) == entity.ThingClass:
-            supclasses.append(supclass)
+    supclasses = super_classes(c=c)
     if owl.Thing in supclasses or len(supclasses) == 0 or supclasses is None:
         return p
     else:
@@ -60,18 +66,39 @@ def get_class_path(o):
 
 # Get te maximum depth of a class to the root
 def depth_max(c):
-    if len(c.is_a) == 0:
+    supclasses = super_classes(c=c)
+    if len(supclasses) == 0:
         return 0
     d_max = 0
-    for super_c in c.is_a:
+    for super_c in supclasses:
         super_d = depth_max(c=super_c)
         if super_d > d_max:
             d_max = super_d
     return d_max + 1
 
 
+# Get te minimum depth of a class to the root
+def depth_min(c):
+    supclasses = super_classes(c=c)
+    if len(supclasses) == 0:
+        return 0
+    d_min = math.inf
+    for super_c in supclasses:
+        super_d = depth_max(c=super_c)
+        if super_d < d_min:
+            d_min = super_d
+    return d_min + 1
+
+
 if __name__ == "__main__":
     onto = get_ontology(FLAGS.onto_file).load()
+
+    # To test depth_min(c) and depth_max(c), both of which are not needed in LogMap-ML
+    '''
+    cls = IRIS["http://purl.obolibrary.org/obo/FOODON_03413647"]
+    d = depth_max(c=cls)
+    d2 = depth_min(c=cls)
+    '''
 
     print('---- extracting class names ----')
     class_name = get_class_name(o=onto)
