@@ -1,7 +1,8 @@
 # LogMap-ML
 
-This folder includes the implementation of LogMap-ML introduced in the paper ****Augmenting Ontology Alignment by Semantic Embedding and Distant Supervision**** which has been accepted by ESWC 2021.
-The HeLis and FoodOn ontologies, their partial GS, their name and path files are in helis_foodon.tar.gz.
+This folder includes the implementation of LogMap-ML introduced in the paper ****Augmenting Ontology Alignment by Semantic Embedding and Distant Supervision****.
+The HeLis and FoodOn ontologies, and their partial GS, which are adopted for the evaluation in the paper, are under **data/**.
+Note the HeLis ontology adopted has been pre-processed by transforming instances into classes.
 
 
 ### Dependence 
@@ -9,9 +10,10 @@ Our codes in this package are tested with
   1. Python 3.7
   2. Tensorflow 1.13.1
   3. gensim 3.8.0
-  4. [OWL2Vec\*](https://github.com/KRR-Oxford/OWL2Vec-Star)
-  5. [LogMap v3.0](https://github.com/ernestojimenezruiz/logmap-matcher)
-  6. [AML](https://github.com/AgreementMakerLight/AML-Project) (Optional)
+  4. OWLready2 0.29
+  5. [OWL2Vec\*](https://github.com/KRR-Oxford/OWL2Vec-Star)
+  6. [LogMap v3.0](https://github.com/ernestojimenezruiz/logmap-matcher)
+  7. [AML](https://github.com/AgreementMakerLight/AML-Project) (Optional)
 
 
 ### Startup
@@ -30,10 +32,11 @@ You can either use the word2vec embedding by gensim (The one trained by English 
 or the ontology tailored [OWL2Vec\* embedding](https://github.com/KRR-Oxford/OWL2Vec-Star). 
 The to-be-aligned ontologies can be set with their own embedding models or be set with one common embedding model.
 
-### Pre-process #3: Path and Class Name Extraction
-We use Java OWL API to pre-extract all the paths and class names of the to-be-aligned ontologies. 
-They are saved as intermediate files (xx_all_paths.txt and xx_class_name.json) by the two java programs under java_preprocess/.
-The name and path files of HeLis and FoodOn are already in helis_foodon.tar.gz.
+### Pre-process #3: Class Name and Path Extraction
+``python name_path --onto_file data/xx.owl --name_file data/xx_lass_name.json --path_file data/xx_all_paths.txt``
+
+This is to extract the name information and path information for each class. 
+It should be executed separately for two ontologies.
 
 ### Step #1: Sample
 ```python sample.py --anchor_mapping_file logmap_output/logmap_anchors.txt```
