@@ -6,10 +6,10 @@ Note the HeLis ontology adopted has been pre-processed by transforming instances
 
 
 ### Dependence 
-Our codes in this package are tested with
-  1. Python 3.7
-  2. Tensorflow 1.13.1
-  3. gensim 3.8.0
+Our codes in this package require: 
+  1. Python 3.8.5
+  2. Tensorflow 2.4.1
+  3. gensim 4.0.1
   4. OWLready2 0.29
   5. [OWL2Vec\*](https://github.com/KRR-Oxford/OWL2Vec-Star)
   6. [LogMap v3.0](https://github.com/ernestojimenezruiz/logmap-matcher)
@@ -21,7 +21,7 @@ Our codes in this package are tested with
 ### Pre-process #1: Run the original system
 Download [LogMap](https://github.com/ernestojimenezruiz/logmap-matcher), build by Maven, run:
 
-```java -jar target/logmap-matcher-4.0.jar MATCHER file:/xx/helis_v1.00.owl file:/xx/foodon-merged.owl output_dir/ true```
+```java -jar target/logmap-matcher-4.0.jar MATCHER file:/xx/helis_v1.00.owl file:/xx/foodon-merged.owl logmap_output/ true```
 
 This leads to LogMap output mappings, overlapping mappings and anchor mappings. 
 For the input ontologies, ``file:`` is necessary; for the output directory, ``/`` is necessary.
@@ -30,29 +30,30 @@ Note LogMap has been updated to V4.0 which now uses OWL API 4. No functional cha
 ### Pre-process #2: Embedding Models
 You can either use the word2vec embedding by gensim (The one trained by English Wikipedia articles in 2018 [download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), 
 or the ontology tailored [OWL2Vec\* embedding](https://github.com/KRR-Oxford/OWL2Vec-Star). 
-The to-be-aligned ontologies can be set with their own embedding models or be set with one common embedding model.
+The to-be-aligned ontologies can use their own embedding models or use one common embedding model.
 
 ### Pre-process #3: Class Name and Path Extraction
-``python name_path.py --onto_file data/xx.owl --name_file data/xx_lass_name.json --path_file data/xx_all_paths.txt``
+``python name_path.py --onto_file data/xx.owl --name_file data/xx_class_name.json --path_file data/xx_all_paths.txt``
 
-This is to extract the name information and path information for each class. 
-It should be executed separately for two ontologies.
+This is to extract the name information and path information for each class in an ontology. 
+It should be executed separately for the to-be-aligned ontologies.
 
 ### Step #1: Sample
-```python sample.py --anchor_mapping_file logmap_output/logmap_anchors.txt```
+```python sample.py --anchor_mapping_file logmap_output/logmap_anchors.txt --left_class_name_file data/xx_class_name.json --left_path_file data/xx_all_paths.txt --right_class_name_file data/xx_class_name.json --right_path_file data/xx_all_paths.txt --train_file data/mappings_train.txt --valid_file data/mappings_valid.txt```
 
-See the parameter "help" and comment inside the program for more setting settings. 
-The branch conflicts which are manually set for higher quality seed mappings are set inside the program.
-It will output mappings_train.txt and mappings_valid.txt.
+It outputs mappings_train.txt and mappings_valid.txt.
+The branch conflicts which are manually set for higher quality seed mappings are set inside the program via the variable ``branch_conflicts``.
+See "help" and comments inside the program for more settings. 
 
 ### Step #2: Train, Valid and Predict
-```python train_valid.py --left_w2v_dir dir/word2vec_gensim --right_w2v_dir dir/word2vec_gensim```
+```python train_valid.py --left_w2v_dir dir/word2vec_gensim --right_w2v_dir dir/word2vec_gensim --train_path_file data/mappings_train.txt --valid_path_file data/mappings_valid.txt```
+
+Path type can be set via ``--path_type`` (use the isolated class, the path from the class to the root, or URI name plus the class and the parent); Networks and path encoding can be set via the variables ``nn_types`` and ``encoder_types``; see more settings in "Help".
 
 ```python predict_candidates.py --candidate_file logmap_output/logmap_overestimation.txt --left_w2v_dir dir/word2vec_gensim --right_w2v_dir dir/word2vec_gensim```
 
-Note the candidate mappings should be pre-extracted by some ontology alignment systems or from some resources (e.g., OAEI). 
-One direct candidate source is the overlapping mappings by LogMap.
-predict_candidates.py by default outputs mapping scores in predict_score.txt.
+Note the candidate mappings should be pre-extracted, usually with a high recall. We use the overlapping mappings by LogMap.
+``predict_candidates.py`` by default outputs mapping scores in predict_score.txt.
 
 ### Step #3: Evaluate
 Calculate the recall w.r.t. the GS, and sample a number of mappings for annotation, by:
@@ -71,6 +72,4 @@ Besides the original LogMap and LogMap-ML, you can also consider [AML](https://g
 
 ========================================
 
-> This is still a preliminary implementation. We are making it more "end-to-end". 
->
-> The current codes use tf.contrib which does not exist in Tensorflow 2.x. 
+> Update on 24 Aug: move to support TF 2.x and Gensim 4.0.1. 
