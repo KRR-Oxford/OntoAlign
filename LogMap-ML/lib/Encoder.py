@@ -19,7 +19,7 @@ def PathEncoderWordCon(name_path, class_num, word_num, wv_model):
 
     e = np.zeros((len(sequence), wv_dim))
     for i, word in enumerate(sequence):
-        if word == 'NaN' or word not in wv_model.wv.vocab:
+        if word == 'NaN' or word not in wv_model.wv:
             e[i, :] = np.zeros(wv_dim)
         else:
             e[i, :] = wv_model.wv[word]
@@ -55,7 +55,7 @@ def PathEncoderAvg(cls, name_path, wv_model, vec_type):
 
 def URI_Vector(cls, wv_model):
     cls_uri = prefix_uri(ns_uri=cls)
-    if cls_uri in wv_model.wv.vocab:
+    if cls_uri in wv_model.wv:
         return wv_model.wv[cls_uri]
     else:
         return np.zeros(wv_model.vector_size)
@@ -66,7 +66,7 @@ def PathEncoderWordAvg(name_path, wv_model):
     num, v = 0, np.zeros(wv_dim)
     for item in name_path:
         for word in to_words(item=item):
-            if word in wv_model.wv.vocab:
+            if word in wv_model.wv:
                 num += 1
                 v += wv_model.wv[word]
     avg = (v / num) if num > 0 else v
