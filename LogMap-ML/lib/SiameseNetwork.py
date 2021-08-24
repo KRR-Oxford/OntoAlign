@@ -3,8 +3,13 @@ import sys
 import datetime
 import tensorflow as tf
 import numpy as np
-from tensorflow.contrib.rnn import GRUCell
 from tensorflow.python.ops.rnn import bidirectional_dynamic_rnn as bi_rnn
+
+# for Tensorflow 1.x
+# from tensorflow.contrib.rnn import GRUCell
+
+# for Tensorflow 2.x
+from tensorflow.keras.layers import GRUCell
 
 
 # from tensorflow.nn import static_bidirectional_rnn as bi_rnn
