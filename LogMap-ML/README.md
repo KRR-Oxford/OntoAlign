@@ -19,13 +19,13 @@ Our codes in this package are tested with
 ### Startup
 
 ### Pre-process #1: Run the original system
-Run LogMap, get its output mappings, overlapping mappings and anchor mappings, by
+Download [LogMap](https://github.com/ernestojimenezruiz/logmap-matcher), build by Maven, run:
 
-```java -jar target/logmap-matcher-3.0.jar MATCHER file:/xx/helis_v1.00.owl file:/xx/foodon-merged.owl output/ true```
+```java -jar target/logmap-matcher-4.0.jar MATCHER file:/xx/helis_v1.00.owl file:/xx/foodon-merged.owl output_dir/ true```
 
-Note LogMap has been updated to V4.0 which now uses OWL API 4. 
-No functional changes are made from V3.0 to V4.0, and thus the ML extension should still be able to work for LogMap V4.0.
-You can try to use the built logmap-matcher-4.0.jar or download the LogMap codes and build it by yourself with Maven.
+This leads to LogMap output mappings, overlapping mappings and anchor mappings. 
+For the input ontologies, ``file:`` is necessary; for the output directory, ``/`` is necessary.
+Note LogMap has been updated to V4.0 which now uses OWL API 4. No functional changes are made from V3.0 to V4.0, and thus LogMap-ML should still be able to work for LogMap V4.0.
  
 ### Pre-process #2: Embedding Models
 You can either use the word2vec embedding by gensim (The one trained by English Wikipedia articles in 2018 [download](https://drive.google.com/file/d/1rm9uJEKG25PJ79zxbZUWuaUroWeoWbFR/view?usp=sharing)), 
