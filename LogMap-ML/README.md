@@ -33,7 +33,7 @@ or the ontology tailored [OWL2Vec\* embedding](https://github.com/KRR-Oxford/OWL
 The to-be-aligned ontologies can be set with their own embedding models or be set with one common embedding model.
 
 ### Pre-process #3: Class Name and Path Extraction
-``python name_path --onto_file data/xx.owl --name_file data/xx_lass_name.json --path_file data/xx_all_paths.txt``
+``python name_path.py --onto_file data/xx.owl --name_file data/xx_lass_name.json --path_file data/xx_all_paths.txt``
 
 This is to extract the name information and path information for each class. 
 It should be executed separately for two ontologies.
