@@ -15,9 +15,9 @@ parser.add_argument('--class_word_size', type=int, default=14,
                     help='max. tokens in a class: 14 for HeLis/FoodOn, 6 for Conference; '
                          'it has no impact currently as word vector averaging is adopted.')
 parser.add_argument('--left_path_size', type=int, default=7,
-                    help='path as input: 7 for HeLis, 7 for Conference; class as input: 1')
+                    help='path as input: 7 for HeLis, 7 for Conference; class as input (--path_type=label): 1')
 parser.add_argument('--right_path_size', type=int, default=31,
-                    help='path as input: 31 for FoodOn, 7 for Conference; class as input: 1')
+                    help='path as input: 31 for FoodOn, 7 for Conference; class as input (--path_type=label): 1')
 
 parser.add_argument('--left_w2v_dir', type=str, default='word2vec_gensim',
                     help='OWL2Vec or Word2Vec of the left ontology')
@@ -28,7 +28,10 @@ parser.add_argument('--vec_type', type=str, default='word',
                     help='word, uri, word-uri; please set it to word by default')
 
 parser.add_argument('--path_type', type=str, default='label',
-                    help='label: the class embedding as input; path: the path embedding as input')
+                    help='three settings: label, path, uri+label;'
+                         'label: the class embedding as input; '
+                         'path: the path embedding as input'
+                         'uri+label: the uri name and label of the class')
 
 parser.add_argument('--nn_base_dir', type=str, default='model_label/', help='the folder for the output models')
 parser.add_argument('--rnn_hidden_size', type=int, default=200)
@@ -46,7 +49,8 @@ encoder_types = ['class-con']
 
 # candidate models that have been implemented
 # SiameseBiRNNN has an on and off bug nan loss issue not addressed
-nn_types = ['MLP', 'BiRNN', 'AttBiRNN', 'SiameseMLP', 'SiameseAttBiRNN']
+# nn_types = ['MLP', 'BiRNN', 'AttBiRNN', 'SiameseMLP', 'SiameseAttBiRNN']
+nn_types = ['MLP', 'SiameseMLP']
 
 start = datetime.now()
 
