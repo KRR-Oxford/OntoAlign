@@ -45,6 +45,35 @@ branch_conflicts = [
     ['"basic food","food"', '"chemical entity","material entity"'],
 ]
 
+# class disjointness constraints for OAEI Conference Track
+'''
+branch_conflicts=[
+    ['"http://conference#Regular_contribution"', '"http://ekaw#Paper"'],
+    ['"http://conference#Conference_document"', '"http://ekaw#Event"'],
+    ['"http://conference#Conference_document"', '"http://iasted#Conference_activity"'],
+    ['"http://edas#Author"', '"http://ekaw#Conference_Participant"'],
+    ['"http://ekaw#Possible_Reviewer"', '"http://iasted#Speaker"'],
+    ['"http://cmt#Reviewer"', '"http://ekaw#Possible_Reviewer"'],
+    ['"http://conference#Conference_document"', '"http://edas#ReviewRating"'],
+    ['"http://edas#Conference"', '"http://ekaw#Event"'],
+    ['"http://edas#ConferenceSession"', '"http://ekaw#Event"'],
+    ['"http://conference#Conference_document"', '"http://iasted#Person"'],
+    ['"http://conference#Conference_document"', '"http://ekaw#Person"'],
+    ['"http://conference#Conference"', '"http://ekaw#Event"'],
+    ['"http://conference#Conference"', '"http://confOf#Event"'],
+    ['"http://iasted#Money"', '"http://sigkdd#Sponzor"'],
+    ['"http://confOf#Event"', '"http://edas#Conference"'],
+    ['"http://cmt#Document"', '"http://edas#ReviewRating"'],
+    ['"http://conference#Conference_document"', '"http://iasted#State"'],
+    ['"http://ekaw#Document"', '"http://iasted#Person"'],
+    ['"http://conference#Conference"', '"http://edas#Conference"'],
+    ['"http://edas#ConferenceEvent"', '"http://ekaw#Document"'],
+    ['"http://edas#ConferenceSession"', '"http://ekaw#Document"'],
+    ['"http://edas#ConferenceEvent"', '"http://iasted#Place"'],
+    ['"http://ekaw#Event"', '"http://iasted#City"']
+]
+'''
+
 
 def read_oaei_mappings(file_name):
     tree = ET.parse(file_name)
