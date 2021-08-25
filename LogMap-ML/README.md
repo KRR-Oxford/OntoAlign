@@ -12,7 +12,7 @@ Our codes in this package require:
   3. gensim 4.0.1
   4. OWLready2 0.29
   5. [OWL2Vec\*](https://github.com/KRR-Oxford/OWL2Vec-Star)
-  6. [LogMap v3.0](https://github.com/ernestojimenezruiz/logmap-matcher)
+  6. [LogMap](https://github.com/ernestojimenezruiz/logmap-matcher)
   7. [AML](https://github.com/AgreementMakerLight/AML-Project) (Optional)
 
 
@@ -48,17 +48,19 @@ See "help" and comments inside the program for more settings.
 ### Step #2: Train, Valid and Predict
 ```python train_valid.py --left_w2v_dir dir/word2vec_gensim --right_w2v_dir dir/word2vec_gensim --train_path_file data/mappings_train.txt --valid_path_file data/mappings_valid.txt```
 
-Path type can be set via ``--path_type`` (use the isolated class, the path from the class to the root, or URI name plus the class and the parent); Networks and path encoding can be set via the variables ``nn_types`` and ``encoder_types``; see more settings in "Help".
+Path type can be set via ``--path_type`` (use the isolated class, the path from the class to the root, or IRI name + the class + the parent); Networks and path encoding can be set via the variables ``nn_types`` and ``encoder_types``; see more settings in "Help".
 
-```python predict_candidates.py --candidate_file logmap_output/logmap_overestimation.txt --left_w2v_dir dir/word2vec_gensim --right_w2v_dir dir/word2vec_gensim```
+```python predict_candidates.py --candidate_file logmap_output/logmap_overestimation.txt --left_class_name_file data/xx_class_name.json --left_path_file data/xx_all_paths.txt --right_class_name_file data/xx_class_name.json --right_path_file data/xx_all_paths.txt --left_w2v_dir dir/word2vec_gensim --right_w2v_dir dir/word2vec_gensim --prediction_out_file data/predict_score.txt --nn_type SiameseMLP```
 
 Note the candidate mappings should be pre-extracted, usually with a high recall. We use the overlapping mappings by LogMap.
-``predict_candidates.py`` by default outputs mapping scores in predict_score.txt.
+``--path_type``, ``--vec_type``, ``--encoder_type``, ``--class_word_size``, ``--left_path_size`` and ``--right_path_size`` should be set to the same in training and prediction.
 
-### Step #3: Evaluate
+### Step #3: Evaluate 
+
+#### With approximation
 Calculate the recall w.r.t. the GS, and sample a number of mappings for annotation, by:
 
-```python evaluate.py --threshold 0.65 --anchor_file logmap_output/logmap_anchors.txt```
+```python evaluate_for_approximate.py --threshold 0.5 --anchor_file logmap_output/logmap_anchors.txt```
 
 It will output a file with a part of the mappings for human annotation. 
 The annotation is done by appending "true" or "false" to each mapping (see annotation example in evaluate.py).
@@ -69,6 +71,11 @@ With the manual annotation and the GS, the precision and recall can be approxima
 Please see Eq. (2)(3)(4) in the paper for how the precision and recall approximation works.
 For more accurate approximate, it is suggested to annotate and use the mappings of at least three systems to approximate the GS. 
 Besides the original LogMap and LogMap-ML, you can also consider [AML](https://github.com/AgreementMakerLight/AML-Project) as well.
+
+#### Straightforward 
+If it is assumed that gold standards (complete ground truth mappings) are given, Precision and Recall can be directly calculated by:
+
+```python evaluate_straightforward.py --prediction_out_file data/predict_score.txt --oaei_GS_file reference.rdf```
 
 ========================================
 
