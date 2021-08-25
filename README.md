@@ -1,6 +1,6 @@
 # OntoAlign
 
-This repository includes our recent implementations on ontology and knowledge graph alignment. See also [OWL2Vec*](https://github.com/KRR-Oxford/OWL2Vec-Star) and [LogMap](https://github.com/ernestojimenezruiz/logmap-matcher/) repositories.
+This repository includes our recent implementations on LogMap-ML. See also [LogMap](https://github.com/ernestojimenezruiz/logmap-matcher/).
 
 
 ## Publications
