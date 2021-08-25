@@ -21,8 +21,9 @@ namespaces = ["http://www.fbk.eu/ontologies/virtualcoach#",
               "http://purl.obolibrary.org/obo/",
               "http://bioontology.org/projects/ontologies/fma/fmaOwlDlComponent_2_0#",
               "http://www.ihtsdo.org/snomed#",
-              "http://www.orpha.net/ORDO/"]
-prefixes = ["vc:", "obo:", "fma:", "snomed:", "ordo:"]
+              "http://www.orpha.net/ORDO/",
+              "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#"]
+prefixes = ["vc:", "obo:", "fma:", "snomed:", "ordo:", "nci:"]
 
 
 def uri_prefix(uri):
